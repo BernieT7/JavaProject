@@ -1,0 +1,327 @@
+import java.util.Scanner;
+
+void main() {                                        // main其實也是一個方法，他是程式執行的進入點
+    //System.out.print("哈囉");                       // 讓電腦印出文字
+/* 資料型態
+    // 字串: "哈囉"                                 一串字
+    System.out.println("哈囉");
+    // 字元: '嗨'                                   一個字
+    System.out.println('嗨');
+    // 整數: 7
+    System.out.println(7);
+    // 浮點數: 164.1
+    System.out.println(164.1);
+    // 布林值: true false
+    System.out.println(true);
+*/
+/* 變數variable，創建變數要宣告他的資料型態
+    // 字串(String)
+    String name = "bernie";
+    System.out.println(name);
+    // 字元(char): '嗨'
+    char hi = 'H';
+    System.out.println(hi);
+    // 整數(int): 7
+    int num = 7;
+    System.out.println(num);
+    // 浮點數(double): 164.1
+    double f = 164.1;
+    System.out.println(f);
+    // 布林值(boolean): true false
+    boolean real = false;
+    System.out.println(real);
+*/
+/* 整數的其他型態:不能超出範圍
+     byte : -128 ~ 127
+     short : -32768 ~ 32767
+     *int : -2147483648 ~ 2147483647
+     long : -9223372036854775808 ~ 9223372036854775807
+     long num1 = nL       定義時後面要加一個L!!
+*/
+/* 浮點數的其他型態:
+     float : 精準到小數點下7位左右
+        float num1 = nf       定義時後面要加一個f!!
+     *double : 精準到小數點下15位左右
+*/
+/* 取得使用者輸入
+    Scanner scanner = new Scanner(System.in);               創建scanner
+    System.out.println("請輸入你的名字");
+    String name = scanner.nextLine();                       取得使用者輸入(字串)
+    System.out.println("哈囉" + name);
+
+    System.out.println("請輸入你的年紀");
+    int age = scanner.nextInt();                            取得使用者輸入(整數)
+    System.out.println(10 + age);
+
+    System.out.println("請輸入你的身高");
+    double height = scanner.nextDouble();                   取得使用者輸入(浮點數數)
+    System.out.println("你的身高:" + height);                 字串跟整數相加，整數會變成字串
+*/
+/* 數學計算Math
+     整數對整數運算只會取得整數(ex:10/3=3)
+     %取餘數
+     Math.max(x, y)      取(x, y)較大者
+     Math.min(x, y)      取(x, y)較小者
+     Math.pow(x, y)      x的y次方
+     Math.round(x)       取x四捨五入
+     Math.ceil(x)         取x無條件進位
+     Math.floor(x)        取x無條件捨棄
+     取小數點第n位: round(x*10)/10 小數點第一位
+                  round(x*100)/100 小數點第二位
+                      依此類推
+*/
+/*判斷語句if:
+    如果...
+        if(條件判斷) {
+
+        };
+    如果...否則
+        if(條件判斷) {
+
+        }else {
+
+        };
+    如果...或是如果...否則
+        if(條件判斷) {
+
+        }else if(條件判斷) {
+
+        }else {
+
+        };
+*/
+/*運算符號:
+     &&且 ||或 !()否
+     ==相等 !=不相等
+     字串相等的比較要用.equals()
+       String name = "123";
+       System.out.println(name.equals("1"));
+*/
+/* switch語句
+    switch(變數){
+        case 變數值1:
+            ...;
+            break;
+        case 變數值2:
+            ...;
+            break;
+        .
+        .
+        .
+        default:                            都不符合上面的case，不用break
+            ...;
+    }
+*/
+/* array陣列:可以一次儲存多個值
+    String[] name = {name1, name2, ...}     字串陣列
+    int[] scores = {1, 2, ...}              整數陣列
+    double[] heights = {140.2, 150.4, ...}  浮點數陣列
+    name[n]                                 取出陣列第n+1個值
+    scores[n] = m                           把第n+1個值改成m
+    datatype[] name = new datatype[n]       創建一個大小為n的陣列
+    陣列.length                              可以取得陣列長度
+*/
+/* 2D陣列:陣列裡還有陣列
+    datatype[][] name = {{name1, name2}, {name3,name4}, name5, ...}
+    name[n][m]                              取出陣列中第n+1個陣列第m+1個值
+    scores[n][m] = s                        把第n+1, m+1個值改成s
+    datatype[][] name = new datatype[n][m]  創建一個大小為n*m的陣列
+*/
+/* while loop
+    while(條件判斷) {                         先條件判斷再執行
+
+    }
+    do {                                    先執行再條件判斷
+
+    }while(條件判斷);
+*/
+/* for loop
+    for(初始化; 條件判斷; 改動){
+        重複執行的程式碼
+    }
+    (ex: for(int i=0; i<scores.length; i++){})
+    for(datatype i:array){                  依序取得陣列中的值，從第一個值到最後一個值
+    }
+*/
+/* nested loop
+    for(){
+        for(){
+        }
+    }
+*/
+/* break, continue
+    break:直接跳出整個迴圈
+    continue:直接進入下一次迴圈
+*/
+/* random
+    Random random = new Random();           創建隨機產生器
+    int x = random.nextInt(n);              隨機產生一個0~n-1的整數
+    double x = random.nextDouble();         隨機產生0~1的浮點數
+    double x = random.nextDouble()*n;       隨機產生0~n的浮點數
+    boolean x = random.nextBoolean()        隨機產生布林值
+*/
+/* class類別: 現實生活中有很多事是無法用現有的資料型態表示，所以需要另外寫一個類別，創建自己的資料型態
+    people.Person person1 = new Person();   創建資料型態
+    person1.name = ;                        賦值
+    person1.age = 22;
+    person1.height = 164.1;
+
+    person1.isAdult();                      使用方法
+    Person person1 = new Person("bernie", 22, 164.1);       創建時可以傳入參數至建構方法
+*/
+/* 變數有效範圍: 變數有效範圍只在最近的大括號裡面，此大括號內的大括號也可以用
+*/
+/* method overloading: 方法名字一樣可以，但是參數數量or參數形態要不一樣
+    方法跟方法之間可以互相呼叫
+*/
+/* 字串方法
+   String name = "...";
+   name.length();                           取得字串長度
+   name.toUpperCase();                      把字母都轉換成大寫
+   name.toLowerCase();                      把字母都換成小寫
+   name.charAt(n);                          取得字串第n+1個字元為何
+   name.isEmpty();                          檢查是否為空字串
+   name.trim();                             把字串的空白部分都刪掉
+   name.replace('n', 'm')                   把n改成m
+   name.equals("string")                    判斷 name=="string"
+*/
+/* 儲存型態
+   1.基本類型: byte, short, int, long, double, float, boolean, char
+        在stack棧內存中儲存值
+   2.引用類型: String, class, Array,...
+        在stack棧內存中儲存地址，地址裡有個heap堆內存
+*/
+/* constructor overloading:建構方法名字一樣可以，但是參數數量or參數形態要不一樣
+*/
+/* 儲存物件的陣列
+   class[] array = {..., ..., ...};         創建物件陣列
+   class[] array = new class[n];            創建大小為n的物件陣列
+*/
+/* object passing
+   不痛類別間中，方法的參數可以傳入其他類別型態
+*/
+/* public, private
+   class中，把屬性或方法設定成private就只能在該class裡使用，不能在其他地方使用
+   public就是在所有地方都能用
+*/
+/* final variable: 設定一個永遠無法改變的變數，
+   final datatype name = value;
+   不過引用類型的變數若為final其值還是可以被做更改，不能被更改的是其地址
+   final變數的名字習慣全部用大寫
+*/
+/* static attribute, method靜態屬性、方法
+   class中所有object的共用屬性、方法，另外存入堆內存的空間，就不用每個地址內都重複寫一樣的方法或屬性，以節省記憶體空間
+   靜態屬性及方法屬於class本身而不是物件，所以使用靜態屬性及方法不需要創建該class的物件即可使用
+*/
+/* encapsulation封裝: 通常class的屬性的值不想被不合理的更改，此時就會需要封裝
+   封裝步驟: 先將欲封裝屬性設為private，設立get方法(取得屬性值)以及set方法(更改屬性值)，
+   在方法裡寫入一些限制條件使得屬性的取得以及更改合理
+*/
+/* inheritance繼承:如果class與class之間有重複的屬性、方法，可以使用繼承，這樣就可以少寫很多的程式碼
+   寫法: public class Name extends parents{
+        }
+*/
+/* super keyword
+   要用繼承的屬性可以寫super.不要用this.，雖然用this.也可以跑但這樣比較好分辨是繼承來的還是本身class有的
+*/
+/* override覆寫: 子類繼承父類後，可改寫其方法，取相同名字然後做更改就好了
+*/
+/* package 套件(包):把性值相像的classes包在通一個資料夾裡面
+   要引入才能使用: import 套件名稱.類別名稱;
+*/
+/* access modifier存取修飾符: public(都能用), private(同一類別), protected(同一類別~不同套件子類別), default(同一類別~同套件非子類別)
+*/
+/* Java的main函數都會自動繼承內建的object類別，其中有一個方法較toString(), 當創建一個類別型態並印出時，toString()會印出class@記憶體位置
+   如果想要改變印出內容，可以覆寫toString()
+   @override
+   public String toString(){}
+*/
+/* polymorphism多態性: 子類物件可以表示成父類或是子類型態都可以
+*/
+/* abstract class, method 抽象類別、方法:
+   一個許多類別的共同行為或屬性的集合，供其他類別繼承使用
+   抽象類別無法被創建
+   抽象方法只能在抽象類別中，且繼承抽象類別的人一定也要覆寫其抽象方法
+   寫法: public abstract class Name(){
+        }
+        public abstract datatype method(){
+        }
+*/
+/* interface接口: 是一個全部都是抽象方法的抽象類別
+   有點像繼承，但接口會指定連接其的class必須要有哪些行為，且只能繼承一個class但可以有好幾個接口
+   寫法: public class Name implements interface1, interface2, ...(){
+        }
+*/
+}
+
+
+**class note
+
+package note;                                                        // 表示此class在people這個套件
+
+public class Person {
+    public String name;                                                // 屬性
+    private int age;
+    public final double height;                                        // final變數
+    public static int totalPerson = 0;                                 // static表示靜態屬性
+
+    public Person(String name, int age, double height){                       // 建構方法:每次創建便會執行的方法，與class同名
+        this.name = name;                                              // 每次創建後都會做的事可以放到建構方法來做
+        this.age = age;                                                // this.的意思就是指類別裡的屬性
+        this.height = height;
+        Person.totalPerson++;                                          // Person.表示其屬於整個class
+    }
+
+    public void sayHi() {                                                     // method: class裡的函數
+        System.out.println("你好啊，我叫" + name);                       // void表示函數不需要回傳值
+    }
+
+    public boolean isAdult() {                                                // 有回傳值，函數的資料型態要與回傳值相同
+        if(age>=18) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public int addUp(int num1, int num2) {                                    // 傳入參數至方法
+        return num1 + num2;
+    }
+
+    public static void add() {                                                 // 靜態方法不能使用非靜態屬性、方法
+        System.out.println("Hi");
+    }
+
+    public int getAge(){                                                       // 封裝，getter
+        return this.age;
+    }
+
+    public void setAge(int age){                                               // 封裝，setter
+        if(age<100 && age>0){
+            this.age = age;
+        }else{
+            System.out.println("不要亂設定");
+        }
+    }
+}
+
+**繼承note
+
+package note;                                                             // 表示此class在people這個套件
+
+public class Student extends Person {                                       // 繼承person(父類)的所有屬性、方法
+    public int score;
+
+    public Student(String name, int age, double height, int score){         // 建構方法
+        super(name, age, height);                                           // super會呼叫父類建構方法，就不用重新寫一次person寫過的建構
+        this.score = score;
+    }
+
+    public static void add(int num1, int num2){
+        System.out.println(num1+num2);
+    }
+
+    @Override
+    public void sayHi() {                                                     // method: class裡的函數
+        System.out.println("你好啊，我叫"+super.name+"我的成績為"+this.score);    // void表示函數不需要回傳值
+    }
+}
