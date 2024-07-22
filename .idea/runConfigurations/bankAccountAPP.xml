@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="bankAccountAPP" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="bankAccountAPP" />
+    <module name="JavaProject" />
+    <option name="PROGRAM_PARAMETERS" value="&quot;C:\Users\user\IdeaProjects\JavaProject\src\BankAccount\data.txt&quot;" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

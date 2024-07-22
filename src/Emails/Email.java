@@ -1,3 +1,5 @@
+package Emails;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class Email {
     private static final int defaultPasswordLength = 10;
     private int capacity = 500;
 
-    Email(String firstName, String lastName){
+    public Email(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
         System.out.println("請問您的部門是?(1~3)");

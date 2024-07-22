@@ -187,9 +187,22 @@ void main() {                                        // main其實也是一個�
 */
 /* 儲存型態
    1.基本類型: byte, short, int, long, double, float, boolean, char
+        沒有函數可以使用
         在stack棧內存中儲存值
    2.引用類型: String, class, Array,...
+        可以使用很多函數
         在stack棧內存中儲存地址，地址裡有個heap堆內存
+   3.wrapper class: 基本類型所對應的類別
+        byte--->Byte
+        short--->Short
+            .
+            .
+            .
+        int--->Integer
+        char--->character
+        這樣基本型態就會變成引用型態，可以使用很多類別裡的函數
+        (ex:toString()把原型態轉換為字串、Integer.parseInt()把字串換為整數、Double.parseDouble()把字串轉換為浮點數
+        、Boolean.parseBoolean("true")把字串轉換為布林值)
 */
 /* constructor overloading:建構方法名字一樣可以，但是參數數量or參數形態要不一樣
 */
@@ -248,12 +261,173 @@ void main() {                                        // main其實也是一個�
         }
 */
 /* interface接口: 是一個全部都是抽象方法的抽象類別
+        public interface Walkable{
+            void walk();                                                    不用設定abstract，在interface裡一定是abstract
+        }
+
    有點像繼承，但接口會指定連接其的class必須要有哪些行為，且只能繼承一個class但可以有好幾個接口
    寫法: public class Name implements interface1, interface2, ...(){
         }
 */
-}
+/* Array list動態陣列: 原本的陣列沒有彈性，一開始就會把大小決定好，而arraylist則是可以使陣列的大小是彈性的
+   寫法: import java.util.Arraylist
+        Arraylist<引用類型> names = new Arraylist<>()                         創建動態陣列，<>只能放引用類型的資料(String, Wrapper class, ...)
+        names.add("");                                                      加入資料進動態陣列
+        names.get(n);                                                       取得動態陣列中第n位
+        names.set(n, m);                                                    把第n位改成m
+        names.remove(n);                                                    把第n位刪掉
+        names.clear();                                                      把陣列清空
+        names.size();                                                       取得陣列大小
+        names.contains(n);                                                  判斷陣列中是否包含n
+*/
+/* 2D Arraylist
+   寫法: Arraylist<Arraylist<引用類型>> names = new Arraylist<>()
+        names.get(n).get(m);                                                取得第n個陣列中的第m個值
+        names.get(n).add(m);                                                在第n個陣列加入新的值m
+        names.get(n).remove(m);                                             移除第n個陣列中的第m個值
+        names.get(n).set(i, j);                                             在第n個陣列中，把第i個值改成j
+*/
+/* generics: 定義method, class, interface時， 可以先不指定資料型態，到使用時才指定
+   寫法:
+   1.method:
+        public <T> void method(T param){
 
+        }
+   2.class:
+        public class MyGenericsClass <T, K> {                                               可以有多個泛型
+            T value;
+            K value2;
+
+            public MyGenericsClass(T value, K value2){
+                this.value = value;
+                this.value2 = value2;
+            }
+
+            public T getValue(){
+                return this.value;
+            }
+
+            public void setValue(T value){
+                this.value = value;
+            }
+
+        }
+
+        void main(){
+                MyGenericsClass<String, Integer> a = new MyGenericsClass<>("小白", 50);     呼叫時傳入的引入類型數要等於class泛型數
+        }
+   3.interface:跟class一樣
+*/
+/* 異常處理: 異常會直接中止程式，try and catch可以避免中止
+   寫法:
+        try{
+
+        }
+        catch(異常型態 e){
+            System.out.print(e.getMessage());                                               可以取得異常訊息
+        }
+        catch(Exception e){                                                                 不管什麼錯誤都會被捕捉
+
+        }
+        finally{                                                                            不管有沒有發生錯誤都會執行
+
+        }
+*/ 拋出異常throw, throws: 自己定義異常
+   寫法:
+        public static boolean canDrive(int age) throws IllegalArgumentException{                         聲明會有IOException異常
+                if(age<=0){
+                    throw new IllegalArgumentException("不能輸入小於等於0的數");                             創建新的異常
+        }
+        有些異常一定要做聲明和處理(try)，例如: Exception, IOException
+*/
+/* FileWriter寫檔案
+   寫法:
+        import java.io.FileWriter;
+
+        try{                                                                                  因為是IOException所以要馬上處理這項錯誤
+            FileWriter writer = new FileWriter("檔案位置", true);                               創建file writer，如果該檔案位制不存在，會直接建立一個新的檔案
+                                                                                              ，第二個參數如果是false會覆寫，true會續寫
+            writer.write("寫入內容");
+            writer.close();                                                                   寫完一定要關起來
+        }
+        catch(IOException e){
+
+        }
+*/
+/* FileReader讀檔案
+   寫法:
+        import java.io.FileWriter;
+
+        try{
+            FileReader reader = new FileReader("檔案位置");                                    創建file reader
+            int data = reader.read();                                                         讀法是讀取檔案中一次一個字元，並回傳一個整數，所以要取得字元要轉換
+            while(data!=-1){                                                                  讀到最後一位
+                System.out.print((char)data);                                                 (char)data可以把讀取到的轉換成字元
+                data = reader.read();
+            }
+            reader.close();                                                                   讀完一定要關起來
+        }
+        catch(FileNotFoundException e){
+
+        }
+        catch(IOException e){
+
+        }
+   一次讀取一行的方法:
+        import java.io.BufferedReader;
+
+        try{
+            FileReader fileReader = new FileReader("檔案位置");
+            BufferedReader buffReader = new BufferedReader(fileReader);
+            String Line = buffReader.readLine();
+            while(line!=null){
+                System.out.println(line);
+                String Line = buffReader.readLine();                                              BufferedReader搭配FileReader可以讀取一行
+            }
+            buffReader.close();
+        }
+        catch(IOException e){
+
+        }
+*/
+/* main方法參數:
+        void main(String[] args){
+
+        }
+        可以在右上角點選edit confiqurations，program arguments中輸入參數，可以輸入多個參數
+        常用來輸入檔案位置
+        args[n]     取得第n個參數
+*/
+/* thread: 執行緒，程式可以執行的地方
+   multithreading: 一個程式拆分在多個執行緒同時執行，平行處理
+       Thread.activeCount();                                               取得執行緒數目
+       Thread.currentThread().setName("87");                                更改執行緒名稱
+       Thread.currentThread().getName();                                    取得執行緒名稱
+       Thread.currentThread().isAlive();                                    確認執行緒是否還存在
+       Thread.sleep(n)                                                      讓執行緒每n毫秒才執行一段程式碼
+
+   創建執行緒:創建一個class
+   1.繼承Thread且必須覆寫override run
+        public class Task1 extends Thread {
+            @Override
+            public void run(){
+            }
+        }
+
+     再到main裡創建一個新的Thread:
+        Task1 t1 = new Task1();                                              創建新的Thread
+        t1.start();                                                          執行run裡的程式
+   2.實現接口Runnable且必須覆寫override run
+        public class Task2 implements Runnable {
+            @Override
+            public void run(){
+            }
+        }
+     再到main裡創建一個新的Thread:
+        Task2 runnable = new Task2();
+        Thread t2 = new Thread(runnable);                                    多了要用Thread創建的步驟
+        t2.start();
+*/
 
 **class note
 
@@ -308,10 +482,10 @@ public class Person {
 
 package note;                                                             // 表示此class在people這個套件
 
-public class Student extends Person {                                       // 繼承person(父類)的所有屬性、方法
+public class Students.Student extends Person {                                       // 繼承person(父類)的所有屬性、方法
     public int score;
 
-    public Student(String name, int age, double height, int score){         // 建構方法
+    public Students.Student(String name, int age, double height, int score){         // 建構方法
         super(name, age, height);                                           // super會呼叫父類建構方法，就不用重新寫一次person寫過的建構
         this.score = score;
     }

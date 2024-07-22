@@ -1,3 +1,5 @@
+package Students;
+
 import java.util.Scanner;
 
 public class Student {
@@ -12,7 +14,7 @@ public class Student {
     private static int studentNum3 = 0;
     private static int studentNum4 = 0;
 
-    Student(){
+    public Student(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("請輸入學生姓名");
         this.name = scanner.nextLine();
